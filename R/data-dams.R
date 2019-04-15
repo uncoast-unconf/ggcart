@@ -1,4 +1,4 @@
-#' Dams
+#' dams
 #'
 #' This data comes from the National Inventory of Dams, <https://nid-test.sec.usace.army.mil/ords/f?p=105:1::::::>
 #'
