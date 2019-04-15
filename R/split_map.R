@@ -19,7 +19,7 @@ split_map_usa <- function(full_map) {
     function(x) {
       x <- bbox_as_sf_poly(x)
       sf::st_intersection(
-        sf::st_transform(full_map, st_crs(x)),
+        sf::st_transform(full_map, sf::st_crs(x)),
         x
       )
     }
@@ -32,7 +32,7 @@ split_map_usa <- function(full_map) {
   non_lower48 <- unlist(non_lower48)
 
   lower48 <- full_map[!(full_map[["__UNIQUE_ID__"]] %in% non_lower48), ]
-  lower48 <- sf::st_transform(lower48, st_crs(out[[1]]))
+  lower48 <- sf::st_transform(lower48, sf::st_crs(out[[1]]))
   out[["lower48"]] <- lower48
 
   out
