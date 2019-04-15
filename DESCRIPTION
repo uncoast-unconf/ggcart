@@ -1,12 +1,15 @@
 Package: albersextra
 Title: albersextra
 Version: 0.0.0.9000
-Authors@R: 
-    person(given = "Heather",
-           family = "Lendway",
-           role = c("aut", "cre"),
-           email = "hlendway@gmail.com")
-Description: Add geoms for ggplot places on ablers
+Authors@R: c(
+    person("Heather", "Lendway", "hlendway@gmail.com", c("aut","cre")),
+    person("Greg", "Freedman Ellis", "greg.freedman@gmail.com", role = "aut"),
+    person("Matt", "Seegebarth", "mdseege@nppd.com", role = "aut"),
+    person("Angela", "Li", "angelali921@gmail.com", role = "aut"),
+    person("Charles", "Minshew", "charlespminshew@gmail.com", role = "aut")
+    )
+Description: A package to include Puerto Rico, the Virgin Islands and Guam in the traditional 
+    Albers maps. It also allows for easier creation of maps using lines and points.
 License: What license it uses
 Encoding: UTF-8
 LazyData: true
