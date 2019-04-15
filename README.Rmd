@@ -36,3 +36,15 @@ library(albersextra)
 ## Pull in sample data for mapping
 head(bridges) ## Data slice from National Bridge Inventory
 ```
+
+```{r example2}
+# Map the dams sample data.
+library(ggplot2)
+ggplot() + geom_sf(data = dams) + coord_sf()
+```
+
+```{r example3}
+# Map the bridges sample data.
+library(ggplot2)
+ggplot() + geom_sf(data = bridges) + coord_sf()
+```
