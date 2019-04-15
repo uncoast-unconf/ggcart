@@ -6,7 +6,10 @@ Authors@R:
            family = "Lendway",
            role = c("aut", "cre"),
            email = "hlendway@gmail.com")
-Description: Add geoms for ggplot places on ablers
+Description: Add geoms for ggplot places on albers
 License: What license it uses
 Encoding: UTF-8
 LazyData: true
+Imports: 
+  ggplot2, 
+  sf
