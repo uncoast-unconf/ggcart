@@ -39,13 +39,13 @@ head(bridges) ## Data slice from National Bridge Inventory
 
 The standard Albers conic projection isn't great for points in Alaska, Hawaii, Puerto Rico, Guam and the U.S. Virgin Islands. (AK and HI are taken care of with AlbersUSA.
 )
-```{r example2}
+```{r example2, fig.height = 3, fig.width = 10}
 # Map the dams sample data.
 library(ggplot2)
 ggplot() + geom_sf(data = dams) + coord_sf()
 ```
 
-```{r example3}
+```{r example3, fig.height = 5.2, fig.width = 10}
 # Map the bridges sample data.
 library(ggplot2)
 ggplot() + geom_sf(data = bridges) + coord_sf()
