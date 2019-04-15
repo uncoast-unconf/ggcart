@@ -1,4 +1,4 @@
-st_abbv,rectype,rtnum,strcture,latmap,longmap,year,bridgecond
+st_abbv,rectype,rtnum,strcture,latitude,longitude,year,bridgecond
 AK,1,10808,NO DATA ENTERED,0,0,2008,F
 AK,1,00391,CHINIAK HIGHWAY,57.603997,-152.405456,1974,F
 AK,1,80007,8000700,55.796342,-131.627775,1999,G
