@@ -10,6 +10,7 @@ Authors@R: c(
     )
 Maintainer: Greg Freedman Ellis <greg.freedman@gmail.com>
 Description: A package to include Puerto Rico, the Virgin Islands and Guam in the traditional Albers maps. It also allows for easier creation of maps using lines and points.
+Depends: R (>=2.10)
 License: What license it uses
 Encoding: UTF-8
 LazyData: true
