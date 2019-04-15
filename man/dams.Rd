@@ -19,7 +19,7 @@
 dams
 }
 \description{
-This data comes from the National Inventory of Dams, <https://nid-test.sec.usace.army.mil/ords/f?p=105:1::::::>
+This data comes from the National Inventory of Dams, \url{https://nid-test.sec.usace.army.mil/ords/f?p=105:1::::::}
 }
 \examples{
 dams
