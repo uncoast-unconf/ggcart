@@ -13,14 +13,14 @@ bbox_as_sf_poly <- function(bbox) {
 
 split_map_usa <- function(full_map) {
   full_map[["__UNIQUE_ID__"]] <- seq_len(nrow(full_map))
-
   out <- lapply(
     albers_extra_bboxes,
     function(x) {
       x <- bbox_as_sf_poly(x)
+
       sf::st_intersection(
-        sf::st_transform(full_map, sf::st_crs(x)),
-        x
+        sf::st_geometry(sf::st_transform(full_map, sf::st_crs(x))),
+        sf::st_geometry(x)
       )
     }
   )
