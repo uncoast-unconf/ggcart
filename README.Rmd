@@ -96,3 +96,28 @@ ggplot()+
 
 ```
 
+## Almost there!
+`geom_sf_albersusa()` exists - but has some trouble...
+
+(And is not documented, and it outputs some warning messages, and it ignores some territories...)
+```{r}
+library(tigris)
+library(rmapshaper)
+library(sf)
+library(dplyr)
+library(ggplot2)
+library(ggcart)
+
+
+capture.output({map <- states(cb = TRUE) %>%
+  st_as_sf(map) %>%
+  ms_simplify(keep = .05) %>%
+  st_transform(
+    "+proj=laea +lat_0=45 +lon_0=-100 +x_0=0 +y_0=0 +a=6370997 +b=6370997 +units=m +no_defs"
+  )
+})
+ggplot() + 
+  ggcart:::geom_sf_albersusa(data = map, aes(geometry = st_geometry(map))) + 
+  ggcart:::geom_sf_albersusa(data = bridges, aes(geometry = st_geometry(bridges)))
+```
+

@@ -16,12 +16,12 @@ GeomSfAlbersusa <- ggplot2::ggproto("GeomSfAlbersusa", ggplot2::Geom,
                     # data.
                     panel_params$x_range <- c(bbox$xmin - 100000, bbox$xmax + 100000)
                     panel_params$y_range <- c(bbox$ymin - 100000, bbox$ymax + 100000)
-                    print(nrow(data))
-                    print(class(data))
+                    #print(nrow(data))
+                    #print(class(data))
                     continental_usa <- data
                     # continental_usa <- data[!(data$STUSPS %in% c("AK","HI","PR","GU")), ]
                     #extra_usa <- data[data$STUSPS %in% c("AK","HI","PR","GU"), ]
-                    print(nrow(continental_usa))
+                    #print(nrow(continental_usa))
                     #print(class(continental_usa))
                     #print(nrow(extra_usa))
                     continental_panel <- ggproto_parent(GeomSf, self)$draw_panel(continental_usa, panel_params, coord, legend)
@@ -46,12 +46,14 @@ GeomSfAlbersusa <- ggplot2::ggproto("GeomSfAlbersusa", ggplot2::Geom,
 
                     split$puerto_rico <- transport_sf(split$puerto_rico, ref = pr_vi, shift = c(-2500000,20000), scale = 4)
                     split$virgin_islands <- transport_sf(split$virgin_islands, ref = pr_vi, shift = c(-2500000,20000), scale = 4)
-                    split$hawaii <- transport_sf(split$hawaii, ref = hawaii, shift = c(4680000, -1100000), scale = 1.5, rotate = -0.610865)
-                    split$alaska <- transport_sf(split$alaska, ref = alaska, shift = c(3510000, -3000000), scale = 0.47, rotate = -0.873)
+                    split$hawaii <- transport_sf(split$hawaii, ref = hawaii, shift = c(5200000, -1100000), scale = 1.5, rotate = -0.610865)
+                    split$alaska <- transport_sf(split$alaska, ref = alaska, shift = c(1000000, -4800000), scale = 0.47, rotate = -0.873)
 
-                    # TODO: Figure out how to deal with GUAM
+
+                    # TODO: Figure out how to deal with GUAM & SAMOA & NORTHERN MARINA
                     split$guam <- NULL
-
+                    split$north_marina <- NULL
+                    split$samoa <- NULL
                     # TODO: Should there be a warning message when we drop points that
                     # fall outside our bboxes?
                     split$unknown <- NULL
