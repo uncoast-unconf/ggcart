@@ -1,6 +1,28 @@
 # Adapted from Laura DeCicco's article Mapping Points
 # (which in turn was based on Bob Rudis's code)
 # http://usgs-r.github.io/dataRetrieval/articles/usMaps.html
+
+#' Title
+#'
+#' @param sf
+#' @param ref
+#' @param scale
+#' @param shift
+#' @param rotate
+#'
+#' @return
+#' @export
+#'
+#' @examples
+move_sf <- function(sf, ref, scale=1, shift=c(0,0), rotate=0) {
+  geo <- sf::st_geometry(sf)
+  centroid <- sf::st_centroid(sf::st_transform(sf::st_geometry(ref), sf::st_crs(sf)))
+  geo <- (((geo - centroid) * scale)+ shift*10000) + centroid
+  sf::st_crs(geo) <- sf::st_crs(sf)
+  sf::st_geometry(sf) <- geo
+  sf
+}
+
 move_sf <- function(sf, scale, shift, rotate = 0, ref = sp) {
   out <- sf
   out <- scale_sf(out, scale)
