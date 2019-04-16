@@ -17,7 +17,11 @@
 move_sf <- function(sf, ref, scale=1, shift=c(0,0), rotate=0) {
   geo <- sf::st_geometry(sf)
   centroid <- sf::st_centroid(sf::st_transform(sf::st_geometry(ref), sf::st_crs(sf)))
-  geo <- (((geo - centroid) * scale)+ shift*10000) + centroid
+  rotation_matrix <- matrix(
+    c(cos(rotate), sin(rotate), -sin(rotate), cos(rotate)),
+    nrow=2,ncol=2
+  )
+  geo <- ((((geo - centroid) * scale) * rotation_matrix)+ shift*10000) + centroid
   sf::st_crs(geo) <- sf::st_crs(sf)
   sf::st_geometry(sf) <- geo
   sf
