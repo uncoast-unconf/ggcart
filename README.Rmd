@@ -59,3 +59,31 @@ bridges <- read_sf("data-raw/bridges.csv", ## Replace with your own csv file
                    options = c("X_POSSIBLE_NAMES=longitude",
                                "Y_POSSIBLE_NAMES=latitude"))
 ```
+
+
+Demonstration on how the shift/rotate/scale functionality within the `transport_sf()` function works. For this example we will be shifting Puerto Rico by 1300km west and 900km north, then rotate 90 degrees, then scale to 2 times the size. 
+```{r, example5, include=TRUE, fig.height = 5.2, fig.width = 10}
+### Demonstration of how the shift functionality works -----------
+pr_centroid <- sf::st_centroid(sf::st_geometry(albersextra:::puerto_rico))
+
+# define shift dimension points for visual reference on map
+pt1 <- pr_centroid
+pt2 <- pr_centroid + 1000*c(-1300,0)
+pt3 <- pr_centroid + 1000*c(-1300,900)
+# Create into two lines (pt1-->pt2, pt2-->pt3) in sf object
+pts <- sf::st_multilinestring(list(rbind(pt1[[1]][1:2], pt2[[1]][1:2]),
+                                   rbind(pt2[[1]][1:2], pt3[[1]][1:2])))
+pts <- sf::st_sfc(pts)
+pts <- sf::st_set_crs(pts, sf::st_crs(pr_centroid))
+# plot the shift/rotate/scale to Puerto Rico
+ggplot()+
+  geom_sf(data=albersextra:::lower48)+
+  geom_sf(data=albersextra:::puerto_rico, color="red")+
+  geom_sf(data=albersextra:::transport_sf(sf=albersextra:::puerto_rico,
+                            scale=2,
+                            shift = c(-1300,900)*1000,
+                            rotate=pi/2), color="blue")+
+  geom_sf(data=pts, color="purple")
+
+```
+
