@@ -24,11 +24,10 @@
 #' geom_sf(data=albersextra:::lower48)+
 #'   geom_sf(data=albersextra:::puerto_rico)+
 #'   geom_sf(data=move_sf(sf=albersextra:::puerto_rico,
-#'                        ref=albersextra:::puerto_rico,
 #'                        scale=4,
 #'                        shift = c(-130,90),
 #'                        rotate=pi/2), color="blue")
-transport_sf <- function(sf, ref, scale=1, shift=c(0,0), rotate=0) {
+transport_sf <- function(sf, ref=sf, scale=1, shift=c(0,0), rotate=0) {
   geo <- sf::st_geometry(sf)
   centroid <- sf::st_centroid(sf::st_transform(sf::st_geometry(ref), sf::st_crs(sf)))
   rotation_matrix <- matrix(
