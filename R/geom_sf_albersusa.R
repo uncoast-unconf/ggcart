@@ -19,7 +19,7 @@ GeomSfAlbersusa <- ggplot2::ggproto("GeomSfAlbersusa", ggplot2::Geom,
                     print(nrow(data))
                     print(class(data))
                     continental_usa <- data
-                    continental_usa <- data[!(data$STUSPS %in% c("AK","HI","PR","GU")), ]
+                    # continental_usa <- data[!(data$STUSPS %in% c("AK","HI","PR","GU")), ]
                     #extra_usa <- data[data$STUSPS %in% c("AK","HI","PR","GU"), ]
                     print(nrow(continental_usa))
                     #print(class(continental_usa))
@@ -29,8 +29,8 @@ GeomSfAlbersusa <- ggplot2::ggproto("GeomSfAlbersusa", ggplot2::Geom,
 
                     #test what happens if i put them in a grobTree together
 
-                    grobTree(continental_panel,
-                             continental_panel)
+                    # grobTree(continental_panel,
+                    #          continental_panel)
                   },
 
 
