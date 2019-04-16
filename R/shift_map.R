@@ -19,11 +19,12 @@
 #'
 #' @examples
 #' # Transports Puerto Rico off the coast of Georgia, rotate 90 degrees
-#' # made 4 times bigger
+#' # made 4 times bigger (original Puerto Rico in red, moved in blue)
+#' library(ggplot2)
 #' ggplot()+
 #' geom_sf(data=albersextra:::lower48)+
-#'   geom_sf(data=albersextra:::puerto_rico)+
-#'   geom_sf(data=move_sf(sf=albersextra:::puerto_rico,
+#'   geom_sf(data=albersextra:::puerto_rico, color = "red")+
+#'   geom_sf(data=transport_sf(sf=albersextra:::puerto_rico,
 #'                        ref=albersextra:::puerto_rico,
 #'                        scale=4,
 #'                        shift = c(-130,90),
