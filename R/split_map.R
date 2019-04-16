@@ -18,22 +18,25 @@ split_map_usa <- function(full_map) {
     function(x) {
       x <- bbox_as_sf_poly(x)
 
-      sf::st_intersection(
-        sf::st_geometry(sf::st_transform(full_map, sf::st_crs(x))),
-        sf::st_geometry(x)
-      )
+      # TODO: suppressWarnings isn't a super great way to
+      # avoid warnings, but can't use st_geometry because
+      # that gets rid of sf attributes
+      suppressWarnings(sf::st_intersection(
+        sf::st_transform(full_map, sf::st_crs(x)),
+        x
+      ))
     }
   )
   names(out) <- names(albers_extra_bboxes)
 
-  non_lower48 <- lapply(out, function(x) {
+  found_ids <- lapply(out, function(x) {
     x[["__UNIQUE_ID__"]]
   })
-  non_lower48 <- unlist(non_lower48)
+  found_ids <- unlist(found_ids)
 
-  lower48 <- full_map[!(full_map[["__UNIQUE_ID__"]] %in% non_lower48), ]
-  lower48 <- sf::st_transform(lower48, sf::st_crs(out[[1]]))
-  out[["lower48"]] <- lower48
+  unknown <- full_map[!(full_map[["__UNIQUE_ID__"]] %in% found_ids), ]
+  unknown <- sf::st_transform(unknown, sf::st_crs(out[[1]]))
+  out[["unknown"]] <- unknown
 
   out
 }

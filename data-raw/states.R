@@ -44,6 +44,7 @@ virgin_islands <- map %>%
 
 
 albers_extra_bboxes <- list(
+  lower48 = st_bbox(lower48),
   alaska = st_bbox(alaska),
   hawaii = st_bbox(hawaii),
   samoa = st_bbox(samoa),
