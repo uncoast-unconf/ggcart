@@ -49,8 +49,19 @@ shift_sf <- function(sf, shift, ref) {
   sf
 }
 
-rotate_sf <- function(sf, rotate) {
-  identity(sf)
+rotate_sf <- function(sf, rotate, ref) {
+  geo <- sf::st_geometry(sf)
+  centroid <- sf::st_centroid(sf::st_transform(sf::st_geometry(ref), sf::st_crs(sf)))
+
+  rotation_matrix <- matrix(
+    c(cos(rotate), sin(rotate), -sin(rotate), cos(rotate)),
+    2,
+    2
+  )
+  geo <- ((geo - centroid) * rotation_matrix) + centroid
+  sf::st_crs(geo) <- sf::st_crs(sf)
+  sf::st_geometry(sf) <- geo
+  sf
 }
 
 
