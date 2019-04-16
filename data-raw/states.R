@@ -11,7 +11,7 @@ library(usethis)
 
 map <- states(resolution = "20m") %>%
   st_as_sf(map) %>%
-  ms_simplify(keep = .01) %>% # needed because my computer is slow
+  ms_simplify(keep = .1) %>% # needed because my computer is slow
   # In current projection, Alaska spans the whole globe
   # So convert to another projection
   sf::st_transform(
