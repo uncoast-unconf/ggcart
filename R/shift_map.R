@@ -28,7 +28,7 @@
 #'   geom_sf(data=albersextra:::puerto_rico, color = "red")+
 #'   geom_sf(data=transport_sf(sf=albersextra:::puerto_rico,
 #'                        scale=4,
-#'                        shift = c(-130,90),
+#'                        shift = c(-130,90)*10000,
 #'                        rotate=pi/2), color="blue")
 transport_sf <- function(sf, ref=sf, scale=1, shift=c(0,0), rotate=0) {
   geo <- sf::st_geometry(sf)
@@ -37,7 +37,7 @@ transport_sf <- function(sf, ref=sf, scale=1, shift=c(0,0), rotate=0) {
     c(cos(rotate), sin(rotate), -sin(rotate), cos(rotate)),
     nrow=2,ncol=2
   )
-  geo <- ((((geo - centroid) * scale) * rotation_matrix)+ shift*10000) + centroid
+  geo <- ((((geo - centroid) * scale) * rotation_matrix) + shift) + centroid
   sf::st_crs(geo) <- sf::st_crs(sf)
   sf::st_geometry(sf) <- geo
   sf
