@@ -16,3 +16,4 @@ LazyData: true
 Imports: 
   ggplot2, 
   sf
+RoxygenNote: 6.1.1
