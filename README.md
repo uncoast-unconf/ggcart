@@ -102,7 +102,16 @@ ggplot()+
                             scale=2,
                             shift = c(-1300,900)*1000,
                             rotate=pi/2), color="blue")+
-  geom_sf(data=pts, color="purple")
+  geom_sf(data=pts, color="purple")+ 
+  annotate(geom="text",
+           x=c(mean(c(pt1[[1]][1], pt2[[1]][1])),
+               mean(c(pt2[[1]][1], pt3[[1]][1]))),
+           y=c(mean(c(pt1[[1]][2], pt2[[1]][2])),
+               mean(c(pt2[[1]][2], pt3[[1]][2]))),
+           label=c("1300km West","900km North"),
+           angle=c(0,90),
+           color="purple",
+           vjust=-.2)
 ```
 
 <img src="man/figures/README-example5-1.png" width="100%" />
