@@ -18,7 +18,7 @@ You can install the development version from
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("hlendway/albersextra")
+devtools::install_github("uncoast-unconf/albersextra")
 ```
 
 ## Examples
