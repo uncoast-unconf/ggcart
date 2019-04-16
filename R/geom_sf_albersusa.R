@@ -19,13 +19,18 @@ GeomSfAlbersusa <- ggplot2::ggproto("GeomSfAlbersusa", ggplot2::Geom,
                     print(nrow(data))
                     print(class(data))
                     continental_usa <- data
-                    #continental_usa <- data[!(data$STUSPS %in% c("AK","HI","PR","GU")), ]
+                    continental_usa <- data[!(data$STUSPS %in% c("AK","HI","PR","GU")), ]
                     #extra_usa <- data[data$STUSPS %in% c("AK","HI","PR","GU"), ]
                     print(nrow(continental_usa))
                     #print(class(continental_usa))
                     #print(nrow(extra_usa))
                     continental_panel <- ggproto_parent(GeomSf, self)$draw_panel(continental_usa, panel_params, coord, legend)
                     continental_panel
+
+                    #test what happens if i put them in a grobTree together
+
+                    grobTree(continental_panel,
+                             continental_panel)
                   },
 
 
@@ -95,13 +100,3 @@ geom_sf_albersusa <- function(mapping = aes(), data = NULL, stat = "sf",
   )
 
 }
-
-
-
-sf_types <- c(GEOMETRY = "other", POINT = "point", LINESTRING = "line",
-              POLYGON = "other", MULTIPOINT = "point", MULTILINESTRING = "line",
-              MULTIPOLYGON = "other", GEOMETRYCOLLECTION = "other",
-              CIRCULARSTRING = "line", COMPOUNDCURVE = "other", CURVEPOLYGON = "other",
-              MULTICURVE = "other", MULTISURFACE = "other", CURVE = "other",
-              SURFACE = "other", POLYHEDRALSURFACE = "other", TIN = "other",
-              TRIANGLE = "other")
