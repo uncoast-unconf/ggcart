@@ -49,8 +49,9 @@ GeomSfAlbersusa <- ggplot2::ggproto("GeomSfAlbersusa", ggplot2::Geom,
                     split$hawaii <- transport_sf(split$hawaii, ref = hawaii, shift = c(4680000, -1100000), scale = 1.5, rotate = -0.610865)
                     split$alaska <- transport_sf(split$alaska, ref = alaska, shift = c(3510000, -3000000), scale = 0.47, rotate = -0.873)
 
+                    browser()
                     # TODO: Figure out how to deal with GUAM
-                    split$guam <- transport_sf(split$guam %>% st_transform(32655), ref = guam %>% st_transform(32655), scale = 25, rotate = 4.25, shift = c(9000000,9000000))
+                    split$guam <- transport_sf(split$guam, ref = guam %>% st_transform(32655), scale = 25, rotate = 4.25, shift = c(6550000,-6000000))
 
                     # TODO: Should there be a warning message when we drop points that
                     # fall outside our bboxes?
