@@ -1,6 +1,6 @@
-#' Bridges
+#' bridges
 #'
-#' This data comes from the National Bridge Inventory, <https://www.fhwa.dot.gov/bridge/nbi.cfm>
+#' This data comes from the National Bridge Inventory, \url{https://www.fhwa.dot.gov/bridge/nbi.cfm}
 #'
 #' @format A tibble with 530 rows and 8 variables:
 #' \describe{
@@ -14,5 +14,7 @@
 #' \item{bridgecond}{The condition of the bridge (F = Fair; G = Good; P = Poor)}
 #' }
 #' @examples
+#' \dontrun{
 #' bridges
+#' }
 "bridges"

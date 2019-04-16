@@ -2,18 +2,20 @@ Package: albersextra
 Title: albersextra
 Version: 0.0.0.9000
 Authors@R: c(
-    person(given = "Heather", "Lendway", "hlendway@gmail.com", c("aut","cre")),
-    person(given = "Greg", "Freedman Ellis", "greg.freedman@gmail.com", c("aut","mai")),
-    person(given = "Matt", "Seegebarth", "mdseege@nppd.com", role = "aut"),
-    person(given = "Angela", "Li", "angelali921@gmail.com", role = "aut"),
-    person(given = "Charles", "Minshew", "charlespminshew@gmail.com", role = "aut")
+    person("Heather", "Lendway", ,"hlendway@gmail.com", c("aut","cre")),
+    person("Greg", "Freedman Ellis", ,"greg.freedman@gmail.com", "aut"),
+    person("Matt", "Seegebarth", ,"mdseege@nppd.com", role = "aut"),
+    person("Angela", "Li", ,"angelali921@gmail.com", role = "aut"),
+    person("Charles", "Minshew", ,"charlespminshew@gmail.com", role = "aut")
     )
 Maintainer: Greg Freedman Ellis <greg.freedman@gmail.com>
 Description: A package to include Puerto Rico, the Virgin Islands and Guam in the traditional Albers maps. It also allows for easier creation of maps using lines and points.
+Depends: R (>= 2.10)
 License: What license it uses
 Encoding: UTF-8
 LazyData: true
 Imports: 
   ggplot2, 
-  sf
+  sf,
+  roxygen2
 RoxygenNote: 6.1.1

@@ -11,8 +11,12 @@ library(usethis)
 
 map <- states(resolution = "20m") %>%
   st_as_sf(map) %>%
-  ms_simplify(keep = .01) # needed because my computer is slow
-
+  ms_simplify(keep = .01) %>% # needed because my computer is slow
+  # In current projection, Alaska spans the whole globe
+  # So convert to another projection
+  sf::st_transform(
+    "+proj=laea +lat_0=45 +lon_0=-100 +x_0=0 +y_0=0 +a=6370997 +b=6370997 +units=m +no_defs"
+)
 
 lower48 <- map %>%
   filter(as.numeric(STATEFP) < 60 & !(STATEFP %in% c("15", "02")))
@@ -40,6 +44,7 @@ virgin_islands <- map %>%
 
 
 albers_extra_bboxes <- list(
+  lower48 = st_bbox(lower48),
   alaska = st_bbox(alaska),
   hawaii = st_bbox(hawaii),
   samoa = st_bbox(samoa),
@@ -59,5 +64,6 @@ use_data(
   puerto_rico,
   virgin_islands,
   albers_extra_bboxes,
-  internal = TRUE
+  internal = TRUE,
+  overwrite = TRUE
 )

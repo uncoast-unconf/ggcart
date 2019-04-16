@@ -27,12 +27,35 @@ You can install the development version from [GitHub](https://github.com/) with:
 # install.packages("devtools")
 devtools::install_github("hlendway/albersextra")
 ```
-## Example
+## Examples
 
-This is a basic example which shows you how to solve a common problem:
+Sample datasets include information from the National Inventory of Dams and the National Bridge Inventory. 
 
 ```{r example}
 library(albersextra)
 ## Pull in sample data for mapping
 head(bridges) ## Data slice from National Bridge Inventory
+```
+
+The standard Albers conic projection isn't great for points in Alaska, Hawaii, Puerto Rico, Guam and the U.S. Virgin Islands. (AK and HI are taken care of with AlbersUSA.
+)
+```{r example2, fig.height = 3, fig.width = 10}
+# Map the dams sample data.
+library(ggplot2)
+ggplot() + geom_sf(data = dams) + coord_sf()
+```
+
+```{r example3, fig.height = 5.2, fig.width = 10}
+# Map the bridges sample data.
+library(ggplot2)
+ggplot() + geom_sf(data = bridges) + coord_sf()
+```
+
+To convert your own set of point data with a latitude and longitude to an sf object, try the following: 
+
+```{r example4, eval=FALSE, include=TRUE}
+# To convert your own point data for use with albersextra
+bridges <- read_sf("data-raw/bridges.csv", ## Replace with your own csv file
+                   options = c("X_POSSIBLE_NAMES=longitude",
+                               "Y_POSSIBLE_NAMES=latitude"))
 ```

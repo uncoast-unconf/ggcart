@@ -1,6 +1,6 @@
-#' Dams
+#' dams
 #'
-#' This data comes from the National Inventory of Dams, <https://nid-test.sec.usace.army.mil/ords/f?p=105:1::::::>
+#' This data comes from the National Inventory of Dams, \url{https://nid-test.sec.usace.army.mil/ords/f?p=105:1::::::}
 #'
 #' @format A tibble with 511 rows and 9 variables:
 #' \describe{
@@ -14,5 +14,7 @@
 #' \item{longitude}{The longitude of the dam}
 #' }
 #' @examples
+#' \dontrun{
 #' dams
+#' }
 "dams"
