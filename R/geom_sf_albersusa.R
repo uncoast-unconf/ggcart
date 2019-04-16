@@ -19,7 +19,7 @@ GeomSfAlbersusa <- ggplot2::ggproto("GeomSfAlbersusa", ggplot2::Geom,
                     print(nrow(data))
                     print(class(data))
                     continental_usa <- data
-                    continental_usa <- data[!(data$STUSPS %in% c("AK","HI","PR","GU")), ]
+                    # continental_usa <- data[!(data$STUSPS %in% c("AK","HI","PR","GU")), ]
                     #extra_usa <- data[data$STUSPS %in% c("AK","HI","PR","GU"), ]
                     print(nrow(continental_usa))
                     #print(class(continental_usa))
@@ -29,8 +29,8 @@ GeomSfAlbersusa <- ggplot2::ggproto("GeomSfAlbersusa", ggplot2::Geom,
 
                     #test what happens if i put them in a grobTree together
 
-                    grobTree(continental_panel,
-                             continental_panel)
+                    # grobTree(continental_panel,
+                    #          continental_panel)
                   },
 
 
@@ -47,7 +47,7 @@ GeomSfAlbersusa <- ggplot2::ggproto("GeomSfAlbersusa", ggplot2::Geom,
                     split$puerto_rico <- transport_sf(split$puerto_rico, ref = pr_vi, shift = c(-2500000,20000), scale = 4)
                     split$virgin_islands <- transport_sf(split$virgin_islands, ref = pr_vi, shift = c(-2500000,20000), scale = 4)
                     split$hawaii <- transport_sf(split$hawaii, ref = hawaii, shift = c(4680000, -1100000), scale = 1.5, rotate = -0.610865)
-                    split$alaska <- transport_sf(split$alaska, ref = hawaii, shift = c(3510000, -3000000), scale = 0.47, rotate = -0.873)
+                    split$alaska <- transport_sf(split$alaska, ref = alaska, shift = c(3510000, -3000000), scale = 0.47, rotate = -0.873)
 
                     # TODO: Figure out how to deal with GUAM
                     split$guam <- NULL
