@@ -3,3 +3,5 @@
 .RData
 .DS_Store
 .Rbuildignore
+packrat/lib*/
+packrat/src/
