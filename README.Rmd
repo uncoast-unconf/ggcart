@@ -12,7 +12,8 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 ```
-# ggcart
+
+# ggcart <a href='https://uncoast-unconf.github.io/ggcart/'><img src='man/figures/ggcart-image.png' align="right" height ="300px"/></a>
 
 <!-- badges: start -->
 <!-- badges: end -->
