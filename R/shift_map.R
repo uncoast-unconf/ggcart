@@ -18,8 +18,13 @@ scale_sf <- function(sf, scale, ref) {
   sf
 }
 
-shift_sf <- function(sf, shift) {
-  identity(sf)
+shift_sf <- function(sf, shift, ref) {
+  geo <- sf::st_geometry(sf)
+  centroid <- sf::st_centroid(sf::st_transform(sf::st_geometry(ref), sf::st_crs(sf)))
+  geo <- (geo - centroid) + shift*10000
+  sf::st_crs(geo) <- sf::st_crs(sf)
+  sf::st_geometry(sf) <- geo
+  sf
 }
 
 rotate_sf <- function(sf, rotate) {
