@@ -14,5 +14,7 @@
 #' \item{bridgecond}{The condition of the bridge (F = Fair; G = Good; P = Poor)}
 #' }
 #' @examples
+#' \dontrun{
 #' bridges
+#' }
 "bridges"
