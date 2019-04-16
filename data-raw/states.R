@@ -9,7 +9,7 @@ library(dplyr)
 library(usethis)
 
 
-map <- states(resolution = "20m") %>%
+map <- states(cb = TRUE) %>%
   st_as_sf(map) %>%
   ms_simplify(keep = .1) %>% # needed because my computer is slow
   # In current projection, Alaska spans the whole globe
