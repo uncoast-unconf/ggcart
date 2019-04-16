@@ -21,7 +21,7 @@ scale_sf <- function(sf, scale, ref) {
 shift_sf <- function(sf, shift, ref) {
   geo <- sf::st_geometry(sf)
   centroid <- sf::st_centroid(sf::st_transform(sf::st_geometry(ref), sf::st_crs(sf)))
-  geo <- (geo - centroid) + shift*10000
+  geo <- ((geo - centroid) + shift*10000) + centroid
   sf::st_crs(geo) <- sf::st_crs(sf)
   sf::st_geometry(sf) <- geo
   sf
