@@ -14,5 +14,7 @@
 #' \item{longitude}{The longitude of the dam}
 #' }
 #' @examples
+#' \dontrun{
 #' dams
+#' }
 "dams"
