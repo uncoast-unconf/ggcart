@@ -1,15 +1,15 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# albersextra
+# ggcart
 
 <!-- badges: start -->
 
 <!-- badges: end -->
 
-The goal of albersextra is to include Puerto Rico, the Virgin Islands
-and Guam in the traditional Albers maps. Also, albersextra will make it
-easier to map line, point and other data in the Albers projection.
+The goal of ggcart is to include Puerto Rico, the Virgin Islands and
+Guam in the traditional Albers maps. Also, ggcart will make it easier to
+map line, point and other data in the Albers projection.
 
 ## Installation
 
@@ -18,7 +18,7 @@ You can install the development version from
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("hlendway/albersextra")
+devtools::install_github("uncoast-unconf/ggcart")
 ```
 
 ## Examples
@@ -27,7 +27,7 @@ Sample datasets include information from the National Inventory of Dams
 and the National Bridge Inventory.
 
 ``` r
-library(albersextra)
+library(ggcart)
 ## Pull in sample data for mapping
 head(bridges) ## Data slice from National Bridge Inventory
 #>   st_abbv rectype rtnum           strcture latitude longitude year
@@ -70,7 +70,7 @@ To convert your own set of point data with a latitude and longitude to
 an sf object, try the following:
 
 ``` r
-# To convert your own point data for use with albersextra
+# To convert your own point data for use with ggcart
 bridges <- read_sf("data-raw/bridges.csv", ## Replace with your own csv file
                    options = c("X_POSSIBLE_NAMES=longitude",
                                "Y_POSSIBLE_NAMES=latitude"))
@@ -83,7 +83,7 @@ scale to 2 times the size.
 
 ``` r
 ### Demonstration of how the shift functionality works -----------
-pr_centroid <- sf::st_centroid(sf::st_geometry(albersextra:::puerto_rico))
+pr_centroid <- sf::st_centroid(sf::st_geometry(ggcart:::puerto_rico))
 
 # define shift dimension points for visual reference on map
 pt1 <- pr_centroid
@@ -96,9 +96,9 @@ pts <- sf::st_sfc(pts)
 pts <- sf::st_set_crs(pts, sf::st_crs(pr_centroid))
 # plot the shift/rotate/scale to Puerto Rico
 ggplot()+
-  geom_sf(data=albersextra:::lower48)+
-  geom_sf(data=albersextra:::puerto_rico, color="red")+
-  geom_sf(data=albersextra:::transport_sf(sf=albersextra:::puerto_rico,
+  geom_sf(data=ggcart:::lower48)+
+  geom_sf(data=ggcart:::puerto_rico, color="red")+
+  geom_sf(data=ggcart:::transport_sf(sf=ggcart:::puerto_rico,
                             scale=2,
                             shift = c(-1300,900)*1000,
                             rotate=pi/2), color="blue")+

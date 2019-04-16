@@ -22,6 +22,8 @@ bridges
 This data comes from the National Bridge Inventory, \url{https://www.fhwa.dot.gov/bridge/nbi.cfm}
 }
 \examples{
+\dontrun{
 bridges
+}
 }
 \keyword{datasets}

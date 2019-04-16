@@ -1,5 +1,5 @@
-Package: albersextra
-Title: albersextra
+Package: ggcart
+Title: ggcart
 Version: 0.0.0.9000
 Authors@R: c(
     person("Heather", "Lendway", ,"hlendway@gmail.com", c("aut","cre")),
